@@ -40,7 +40,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
       // parent: this.element.nativeElement,
       data,
       height: 200,
-      title: this.data.title,
+      // title: this.data.title,
       type: this.data.type,
     }
 

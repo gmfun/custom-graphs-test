@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {AppComponent} from '../app.component';
 import {GridsterConfig, GridsterItem} from 'angular-gridster2';
 import {DataFormat} from '../graph/graph.component';
 
 
 
-interface Dashboard extends GridsterItem {
+export interface Dashboard extends GridsterItem {
   graphData: DataFormat;
 }
 
 @Component({
   selector: 'app-graphs',
   templateUrl: './graphs.component.html',
-  styleUrls: ['./graphs.component.css']
+  styleUrls: ['./graphs.component.css'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class GraphsComponent implements OnInit {
 
@@ -52,11 +53,14 @@ export class GraphsComponent implements OnInit {
         x: 2,
         graphData: {
           title: 'Second',
-          type: 'line',
+          type: 'bar',
           data: [['A', 3], ['asd', 4]]
         }
       }
     ];
+  }
+  updateData(data, i) {
+    this.dashboard[i] = data;
   }
 
   changedOptions() {
