@@ -2,5 +2,6 @@
 <gridster [options]="options">
   <gridster-item [item]="item" *ngFor="let item of dashboard; let i = index">
     <app-customizable-graph [item]="item" (updateItem)="updateData($event, i)"></app-customizable-graph>
+    <button class="drag-handler">drag</button>
   </gridster-item>
 </gridster>
