@@ -1,0 +1,8 @@
+<div class="flex-row">
+  <app-type-selector (changeType)="changeType($event)" [type]="item.graphData.type"></app-type-selector>
+  <app-type-title (changeTitle)="changeTitle($event)" [title]="item.graphData.title"></app-type-title>
+</div>
+<app-data-selector (changedatasets)="changeProp($event, 'data')" [datasets]="item.graphData.data"></app-data-selector>
+<div>{{item.graphData.title}}</div>
+<app-graph [data]="item.graphData">
+</app-graph>

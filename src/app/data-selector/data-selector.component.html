@@ -1,0 +1,4 @@
+<div *ngFor="let dataset of dataInputs; let i = index">
+  <app-type-title [title]="dataset" (changeTitle)="selectDataSet($event, i)"></app-type-title>
+</div>
+<app-type-title [title]="''" (changeTitle)="addData($event)"></app-type-title>
