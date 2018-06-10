@@ -1,0 +1,6 @@
+@import "~frappe-charts/dist/frappe-charts.min.css";
+:host {
+  height: 500px;
+  width: 600px;
+}
+
