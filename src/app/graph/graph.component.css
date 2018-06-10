@@ -1,6 +1,11 @@
 @import "~frappe-charts/dist/frappe-charts.min.css";
 :host {
-  height: 500px;
-  width: 600px;
+  /*height: 100px;*/
+  /*width: 100px;*/
+  /*height: 500px;*/
+  /*width: 600px;*/
+}
+.graph-slot {
+  /*width: 300px;*/
 }
 

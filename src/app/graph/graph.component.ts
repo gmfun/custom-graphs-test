@@ -1,5 +1,7 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation, Renderer2} from '@angular/core';
 import Chart from 'frappe-charts/dist/frappe-charts.esm';
+import {Renderer3} from '@angular/core/src/render3/interfaces/renderer';
+import set = Reflect.set;
 // const Chart = require('frappe-charts/dist/frappe-charts.min.cjs');
 
 export interface DataFormat {
@@ -16,7 +18,10 @@ export interface DataFormat {
 export class GraphComponent implements OnInit, AfterViewInit {
   @ViewChild('slot') slot: ElementRef;
   @Input() data: DataFormat;
-  constructor(private element: ElementRef) { }
+  constructor(
+    private element: ElementRef,
+    private  renderer: Renderer2
+  ) { }
 
   ngOnInit() {
   }
@@ -30,40 +35,24 @@ export class GraphComponent implements OnInit, AfterViewInit {
       type: this.data.type,
       parent: this.element.nativeElement,
     };
-    // data = {
-    //   ...data,
-    //   labels: ["12am-3am", "3am-6am", "6am-9am", "9am-12pm",
-    //     "12pm-3pm", "3pm-6pm", "6pm-9pm", "9pm-12am"],
-    //
-    //   datasets: [
-    //     {
-    //       name: "Some Data", chartType: 'bar',
-    //       values: [25, 40, 30, 35, 8, 52, 17, -4]
-    //     },
-    //     {
-    //       name: "Another Set", chartType: 'bar',
-    //       values: [25, 50, -10, 15, 18, 32, 27, 14]
-    //     },
-    //     {
-    //       name: "Yet Another", chartType: 'line',
-    //       values: [15, 20, -3, -15, 58, 12, -17, 37]
-    //     }
-    //   ],
-    //   title: "My Awesome Chart",
-    //   type: 'line', // or 'bar', 'line', 'pie', 'percentage'
-    //   // height: 300,
-    //   // colors: ['purple', '#ffa3ef', 'light-blue'],
-    // }
-    console.log(data);
-    const chart = new Chart({
+    const chartData = {
       parent: this.slot.nativeElement,
+      // parent: this.element.nativeElement,
       data,
-      height: 300,
-      width: 400,
+      height: 200,
       title: this.data.title,
       type: this.data.type,
-    });
-    // this.randomize()
+    }
+
+    setTimeout(() => {
+
+      this.setChart(chartData);
+
+    }, 100);
+  }
+
+  setChart(data) {
+    const chart = new Chart(data);
   }
 
   procData() {

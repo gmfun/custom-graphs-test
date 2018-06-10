@@ -36,7 +36,7 @@ export class GraphsComponent implements OnInit {
     this.dashboard = [
       {
         cols: 2,
-        rows: 1,
+        rows: 2,
         y: 0,
         x: 0,
         graphData: {
@@ -53,7 +53,7 @@ export class GraphsComponent implements OnInit {
         graphData: {
           title: 'Second',
           type: 'line',
-          data: [['A', 3]]
+          data: [['A', 3], ['asd', 4]]
         }
       }
     ];
